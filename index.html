@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Untitled Document</title>
+    <style>
+    html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+	min-width: 100%;
+	padding: 0; margin: 0;
+}
+
+main {
+	width: 100%;
+	height: 100vh;
+
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.window {
+	width: 45%;
+	height: 100vh;
+	overflow-y: scroll;
+
+	display: flex;
+	justify-content: center;
+}
+
+#menubar {
+	width: 10%;
+	height: 100vh;
+	background-color: grey;
+}
+
+.control {
+	height: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.control:hover {
+	background-color: lightblue;
+}
+
+.wrapper {
+	width: 80%;
+	height: 95%;
+	overflow: visible;
+}
+
+.entry {
+	width: 100%;
+	height: 100px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: grey;
+	box-shadow: 5px 10px 8px #888888;
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
+
+.selected {
+	background-color: black;
+	color: white;
+}
+    </style>
+	</head>
+
+	<body>
+		<main>
+			<div class="window" id="right-window">
+				<div class="wrapper" id="right-wrapper">
+
+				</div>
+			</div>
+			<div id="menubar">
+				<div id="left" class="control"><h1>&larr;</h1></div>
+				<div id="right" class="control"><h1>&rarr;</h1></div>
+			</div>
+			<div class="window" id="left-window">
+				<div class="wrapper" id="left-wrapper">
+
+				</div>
+			</div>
+		</main>
+	</body>
+<script type="text/javascript">
+let elementsLeft = new Array();
+let elementsRight = new Array();
+
+window.addEventListener("load", () => {
+let rightWindow = document.getElementById("right-wrapper");
+let leftWindow = document.getElementById("left-wrapper");
+let randomLeft = Math.floor(Math.random() * 10);
+let randomRight = Math.floor(Math.random() * 10);
+
+for(let i = 0; i < randomLeft; i++) {
+  elementsLeft[i] = document.createElement("div");
+  elementsLeft[i].classList.add("entry");
+  elementsLeft[i].textContent = i;
+  elementsLeft[i].onclick = clickManagerLeft;
+  leftWindow.appendChild(elementsLeft[i]);
+}
+
+for(let i = 0; i < randomRight; i++) {
+  elementsRight[i] = document.createElement("div");
+  elementsRight[i].classList.add("entry");
+  elementsRight[i].textContent = i;
+  elementsRight[i].onclick = clickManagerRight;
+  rightWindow.appendChild(elementsRight[i]);
+}
+});
+window.onload = () => {
+	document.getElementById("left").addEventListener("click", () => {
+		let rightWindow = document.getElementById("right-wrapper");
+		let leftWindow = document.getElementById("left-wrapper");
+
+		moveElements(rightWindow, leftWindow)
+	});
+
+	document.getElementById("right").addEventListener("click", () => {
+		let rightWindow = document.getElementById("right-wrapper");
+		let leftWindow = document.getElementById("left-wrapper");
+
+		moveElements(leftWindow, rightWindow)
+	});
+}
+
+function moveElements(sourceWindow, destinationWindow) {
+	let sourceElements = sourceWindow.children;
+	let currentElement = 0;
+	while(currentElement < sourceElements.length) {
+		let c = sourceElements[currentElement];
+		if (c.classList.contains("selected")) {
+			destinationWindow.appendChild(c);
+			c.classList.toggle("selected");
+		} else {
+			currentElement++;
+		}
+	}
+}
+
+function clickManagerLeft() {
+	this.classList.toggle("selected");
+}
+
+function clickManagerRight() {
+	this.classList.toggle("selected");
+}
+  </script>
+</html>
