@@ -4,6 +4,7 @@ let elementsRight = new Array();
 window.addEventListener("load", () => {
 	let rightWindow = document.getElementById("right-wrapper");
 	let leftWindow = document.getElementById("left-wrapper");
+
 	let namesLeft = [
 		"Müller Stefan",
 		"Trauner Lukas",
@@ -67,8 +68,9 @@ function moveElements(sourceWindow, destinationWindow) {
 	let currentElement = 0;
 	while(currentElement < sourceElements.length) {
 		let c = sourceElements[currentElement];
-		if (c.classList.contains("selected")) {
+		if (c.classList.contains("fa fa-check-square-o") && c.classList.contains("selected")) {
 			destinationWindow.appendChild(c);
+			c.classList.toggle("fa fa-check-square-o");
 			c.classList.toggle("selected");
 		} else {
 			currentElement++;
@@ -77,5 +79,6 @@ function moveElements(sourceWindow, destinationWindow) {
 }
 
 function clickManager() {
+	this.classList.toggle("fa fa-check-square-o");
 	this.classList.toggle("selected");
 }
