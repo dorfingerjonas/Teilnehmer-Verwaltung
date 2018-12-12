@@ -13,7 +13,11 @@ window.addEventListener("load", () => {
 		"Scholl Sebastian",
 		"Dorfinger Jonas",
 <<<<<<< HEAD
+<<<<<<< HEAD
 		"Wiesinger Jonas",
+=======
+		"Wiesinger Jonasss",
+>>>>>>> ba97b7c1becba5728b18c07a5bfd3d6331d8bf6a
 =======
 		"Wiesinger Jonasss",
 >>>>>>> ba97b7c1becba5728b18c07a5bfd3d6331d8bf6a
