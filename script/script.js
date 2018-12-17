@@ -4,7 +4,7 @@ let elementsRight = new Array();
 window.addEventListener("load", () => {
 	let rightWindow = document.getElementById("right-wrapper");
 	let leftWindow = document.getElementById("left-wrapper");
-	let namesLeft = [
+	let studentsLeft = [
 		"Müller Stefan",
 		"Trauner Lukas",
 		"Hochhauser Felix",
@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
 		"Ecker Quirin"
 	];
 
-	let namesRight = [
+	let studentsRight = [
 		"Reichenfelser Ramona",
 		"Schrattenecker Flora",
 		"Pamminger Victoria",
@@ -30,18 +30,18 @@ window.addEventListener("load", () => {
 		"Noah Fassbender"
 	];
 
-	for(let i = 0; i < namesLeft.length; i++) {
+	for(let i = 0; i < studentsLeft.length; i++) {
 		elementsLeft[i] = document.createElement("div");
 		elementsLeft[i].classList.add("entry");
-		elementsLeft[i].textContent = namesLeft[i];
+		elementsLeft[i].textContent = studentsLeft[i];
 		elementsLeft[i].addEventListener("click", clickManager);
 		leftWindow.appendChild(elementsLeft[i]);
 	}
 
-	for(let i = 0; i < namesRight.length; i++) {
+	for(let i = 0; i < studentsRight.length; i++) {
 		elementsRight[i] = document.createElement("div");
 		elementsRight[i].classList.add("entry");
-		elementsRight[i].textContent = namesRight[i];
+		elementsRight[i].textContent = studentsRight[i];
 		elementsRight[i].addEventListener("click", clickManager);
 		rightWindow.appendChild(elementsRight[i]);
 	}
