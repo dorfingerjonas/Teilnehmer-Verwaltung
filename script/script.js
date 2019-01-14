@@ -4,7 +4,18 @@ let elementsRight = new Array();
 window.addEventListener("load", () => {
 	let rightWindow = document.getElementById("right-wrapper");
 	let leftWindow = document.getElementById("left-wrapper");
-	let studentsLeft = [
+
+	let students = [
+		"Reichenfelser Ramona",
+		"Schrattenecker Flora",
+		"Pamminger Victoria",
+		"Seiringer Julia",
+		"Mair Paula",
+		"Zopf Jonas",
+		"Zauner Alexander",
+		"Schein Cornelia",
+		"Putz Simon",
+		"Noah Fassbender",
 		"Müller Stefan",
 		"Trauner Lukas",
 		"Hochhauser Felix",
@@ -17,33 +28,12 @@ window.addEventListener("load", () => {
 		"Ecker Quirin"
 	];
 
-	let studentsRight = [
-		"Reichenfelser Ramona",
-		"Schrattenecker Flora",
-		"Pamminger Victoria",
-		"Seiringer Julia",
-		"Mair Paula",
-		"Zopf Jonas",
-		"Zauner Alexander",
-		"Schein Cornelia",
-		"Putz Simon",
-		"Noah Fassbender"
-	];
-
-	for(let i = 0; i < studentsLeft.length; i++) {
+	for(let i = 0; i < students.length; i++) {
 		elementsLeft[i] = document.createElement("div");
 		elementsLeft[i].classList.add("entry");
-		elementsLeft[i].textContent = studentsLeft[i];
+		elementsLeft[i].textContent = students[i];
 		elementsLeft[i].addEventListener("click", clickManager);
 		leftWindow.appendChild(elementsLeft[i]);
-	}
-
-	for(let i = 0; i < studentsRight.length; i++) {
-		elementsRight[i] = document.createElement("div");
-		elementsRight[i].classList.add("entry");
-		elementsRight[i].textContent = studentsRight[i];
-		elementsRight[i].addEventListener("click", clickManager);
-		rightWindow.appendChild(elementsRight[i]);
 	}
 });
 window.onload = () => {
@@ -65,7 +55,7 @@ window.onload = () => {
 function moveElements(sourceWindow, destinationWindow) {
 	let sourceElements = sourceWindow.children;
 	let currentElement = 0;
-	while(currentElement < sourceElements.length) {
+	while (currentElement < sourceElements.length) {
 		let c = sourceElements[currentElement];
 		if (c.classList.contains("selected")) {
 			destinationWindow.appendChild(c);
